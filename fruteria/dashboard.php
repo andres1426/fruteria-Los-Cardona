@@ -8,7 +8,7 @@ require __DIR__ . '/includes/header.php';
 
 <section class="dashboard">
     <h2>Panel principal</h2>
-    <p>Bienvenido, <?php echo htmlspecialchars($_SESSION['user']); ?>.</p>
+    <p>Bienvenido, <?= htmlspecialchars($_SESSION['user']) ?>.</p>
     <div class="card-grid">
         <article class="card">
             <h3>Gestión de productos</h3>
