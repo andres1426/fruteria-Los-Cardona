@@ -41,7 +41,7 @@ try {
 
 $editar = null;
 if (isset($_GET['edit'])) {
-    $id = (int)$_GET['edit'];
+   $id = filter_input(INPUT_GET, 'edit', FILTER_VALIDATE_INT);
     $stmt = $pdo->prepare('SELECT * FROM productos WHERE id_producto = ?');
     $stmt->execute([$id]);
     $editar = $stmt->fetch();
