@@ -73,12 +73,13 @@ require __DIR__ . '/includes/header.php';
                 <label>
                     Precio
                    <input 
-                    type="number" 
-                    name="precio" 
-                    min="1" 
-                    value="<?php echo htmlspecialchars($editar['precio'] ?? '', ENT_QUOTES, 'UTF-8'); ?>" 
-                    required
-                    >
+                   type="number" 
+                   name="precio" 
+                   min="1" 
+                   value="<?= htmlspecialchars($editar['precio'] ?? '', ENT_QUOTES, 'UTF-8') ?>" 
+                   required
+                   >
+
                 </label>
                 <label>
                     Tipo
