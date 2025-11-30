@@ -41,10 +41,15 @@ try {
 
 $editar = null;
 if (isset($_GET['edit'])) {
-    $id = (int)$_GET['edit'];
-    $stmt = $pdo->prepare('SELECT * FROM productos WHERE id_producto = ?');
-    $stmt->execute([$id]);
-    $editar = $stmt->fetch();
+    $id = filter_input(INPUT_GET, 'edit', FILTER_VALIDATE_INT);
+    if ($id !== false && $id !== null) {
+        $stmt = $pdo->prepare('SELECT * FROM productos WHERE id_producto = ?');
+        $stmt->execute([$id]);
+        $editar = $stmt->fetch(PDO::FETCH_ASSOC);
+        if ($editar === false) {
+            $editar = null;
+        }
+    }
 }
 
 $productos = $pdo->query('SELECT p.*, t.nom_tprod FROM productos p INNER JOIN tipo_prod t ON p.fk_tprod = t.id_tipo_prod ORDER BY p.id_producto DESC')->fetchAll();
@@ -72,14 +77,14 @@ require __DIR__ . '/includes/header.php';
                 </label>
                 <label>
                     Precio
-                    <input type="number" name="precio" min="1" value="<?php echo htmlspecialchars($editar['precio'] ?? ''); ?>" required>
+                    <input type="number" name="precio" min="1" value="<?php echo isset($editar['precio']) ? (int)$editar['precio'] : ''; ?>" required>
                 </label>
                 <label>
                     Tipo
                     <select name="fk_tprod" required>
                         <option value="">Selecciona...</option>
                         <?php foreach ($tipos as $tipo): ?>
-                            <option value="<?php echo (int)$tipo['id_tipo_prod']; ?>" <?php echo (!empty($editar['fk_tprod']) && (int)$editar['fk_tprod'] === (int)$tipo['id_tipo_prod']) ? 'selected' : ''; ?>>
+                            <option value="<?php echo (int)$tipo['id_tipo_prod']; ?>" <?php echo (!empty($editar) && !empty($editar['fk_tprod']) && (int)$editar['fk_tprod'] === (int)$tipo['id_tipo_prod']) ? 'selected' : ''; ?>>
                                 <?php echo htmlspecialchars($tipo['nom_tprod']); ?>
                             </option>
                         <?php endforeach; ?>

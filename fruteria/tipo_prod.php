@@ -48,10 +48,15 @@ try {
 
 $editar = null;
 if (isset($_GET['edit'])) {
-    $id = (int)$_GET['edit'];
-    $stmt = $pdo->prepare('SELECT * FROM tipo_prod WHERE id_tipo_prod = ?');
-    $stmt->execute([$id]);
-    $editar = $stmt->fetch();
+    $id = filter_input(INPUT_GET, 'edit', FILTER_VALIDATE_INT);
+    if ($id !== false && $id !== null) {
+        $stmt = $pdo->prepare('SELECT * FROM tipo_prod WHERE id_tipo_prod = ?');
+        $stmt->execute([$id]);
+        $editar = $stmt->fetch(PDO::FETCH_ASSOC);
+        if ($editar === false) {
+            $editar = null;
+        }
+    }
 }
 
 $tipos = $pdo->query('SELECT * FROM tipo_prod ORDER BY id_tipo_prod DESC')->fetchAll();
@@ -59,7 +64,7 @@ $tipos = $pdo->query('SELECT * FROM tipo_prod ORDER BY id_tipo_prod DESC')->fetc
 require __DIR__ . '/includes/header.php';
 ?>
 
-<section>
+<section></section>
     <h2>Tipos de producto</h2>
     <?php if ($message): ?>
         <p class="alert alert-info"><?php echo htmlspecialchars($message); ?></p>
