@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 27-11-2025 a las 02:25:59
+-- Tiempo de generación: 30-11-2025 a las 22:57:15
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -41,7 +41,19 @@ CREATE TABLE `productos` (
 INSERT INTO `productos` (`id_producto`, `nom_prod`, `precio`, `fk_tprod`) VALUES
 (1, 'naranja', 2000, 1),
 (2, 'ciruela', 1000, 2),
-(3, 'coco', 5000, 3);
+(3, 'coco', 5000, 3),
+(4, 'manzana roja', 8000, 2),
+(5, 'pera', 3500, 2),
+(6, 'maracuya', 9000, 1),
+(7, 'piña', 4500, 1),
+(8, 'mani', 6600, 3),
+(9, 'pepino', 3300, 3),
+(10, 'uva roja', 6600, 2),
+(11, 'lulo', 5500, 1),
+(12, 'guanabana', 5000, 9),
+(13, 'mor', 90000, 1),
+(14, 'guayaba', 750, 9),
+(15, 'uchua', 980, 1);
 
 -- --------------------------------------------------------
 
@@ -61,7 +73,11 @@ CREATE TABLE `tipo_prod` (
 INSERT INTO `tipo_prod` (`id_tipo_prod`, `nom_tprod`) VALUES
 (1, 'acidas'),
 (2, 'semiacidas'),
-(3, 'neutras');
+(3, 'neutras'),
+(4, 'dulce'),
+(5, 'sin sabor'),
+(6, 'semidulces'),
+(7, 'exceso de dulce');
 
 --
 -- Índices para tablas volcadas
@@ -88,13 +104,13 @@ ALTER TABLE `tipo_prod`
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `id_producto` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_producto` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=161;
 
 --
 -- AUTO_INCREMENT de la tabla `tipo_prod`
 --
 ALTER TABLE `tipo_prod`
-  MODIFY `id_tipo_prod` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_tipo_prod` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- Restricciones para tablas volcadas
