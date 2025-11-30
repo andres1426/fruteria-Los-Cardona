@@ -67,7 +67,7 @@ require __DIR__ . '/includes/header.php';
 <section></section>
     <h2>Tipos de producto</h2>
     <?php if ($message): ?>
-        <p class="alert alert-info"><?= htmlspecialchars($Message) ?></p>
+        <p class="alert alert-info"><?= htmlspecialchars($message) ?></p>
     <?php endif; ?>
 
     <div class="grid-2">
