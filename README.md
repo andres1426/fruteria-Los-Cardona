@@ -95,12 +95,12 @@ Contiene archivos de configuración vitales para la aplicación y elementos reut
 ---
 
 
-## 👤 Autor
+##  Autor
 
 * **Andrés Felipe Cardona Torres**
 * **Ficha: 3197814**
 ---
 
-## ⚖️ Licencia
+##  Licencia
 
 Este proyecto está disponible para **uso académico y educativo**.
